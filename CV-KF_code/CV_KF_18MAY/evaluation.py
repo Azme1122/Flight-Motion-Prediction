@@ -1,0 +1,106 @@
+"""Sliding-window trajectory evaluation."""
+
+import numpy as np
+
+from data_loader import add_measurement_noise
+from kalman_filter_model import run_cv_kf_on_window
+from metrics import (
+    compute_calibration_curves,
+    compute_coverage_and_sharpness,
+    compute_errors,
+    mahalanobis_squared,
+)
+
+
+def evaluate_one_trajectory_sliding_windows(
+    gt_positions,
+    obs_len,
+    pred_len,
+    stride,
+    dt,
+    measurement_noise_std,
+    q_scale,
+    seed=42,
+):
+    """Evaluate one trajectory with overlapping observation/prediction windows."""
+    rng = np.random.default_rng(seed)
+    measurements = add_measurement_noise(
+        gt_positions,
+        noise_std=measurement_noise_std,
+        rng=rng,
+    )
+
+    all_predictions = []
+    all_covariances = []
+    all_ground_truth = []
+    all_window_errors = []
+    all_d2_by_window = []
+
+    max_start = len(gt_positions) - obs_len - pred_len
+    window_count = 0
+
+    for start in range(0, max_start + 1, stride):
+        obs_start = start
+        obs_end = start + obs_len
+        pred_start = obs_end
+        pred_end = obs_end + pred_len
+
+        obs_measurements = measurements[obs_start:obs_end]
+        future_gt = gt_positions[pred_start:pred_end]
+
+        (
+            estimated_positions,
+            estimated_covariances,
+            future_predictions,
+            future_covariances,
+        ) = run_cv_kf_on_window(
+            obs_measurements=obs_measurements,
+            pred_len=pred_len,
+            dt=dt,
+            measurement_noise_std=measurement_noise_std,
+            q_scale=q_scale,
+        )
+
+        errors = compute_errors(future_predictions, future_gt)
+        d2_values = []
+
+        for pred, cov, gt in zip(future_predictions, future_covariances, future_gt):
+            d2_values.append(mahalanobis_squared(gt, pred, cov))
+
+        all_predictions.append(future_predictions)
+        all_covariances.append(future_covariances)
+        all_ground_truth.append(future_gt)
+        all_window_errors.append(errors)
+        all_d2_by_window.append(d2_values)
+        window_count += 1
+
+    all_predictions = np.vstack(all_predictions)
+    all_covariances = np.vstack(all_covariances)
+    all_ground_truth = np.vstack(all_ground_truth)
+    all_window_errors = np.array(all_window_errors)
+    all_d2_by_window = np.array(all_d2_by_window)
+
+    overall_ade = np.mean(all_window_errors)
+    mean_fde = np.mean(all_window_errors[:, -1])
+    mean_error_by_horizon = np.mean(all_window_errors, axis=0)
+
+    uncertainty_results = compute_coverage_and_sharpness(
+        predictions=all_predictions,
+        covariances=all_covariances,
+        ground_truth=all_ground_truth,
+    )
+    calibration_curves = compute_calibration_curves(
+        d2_by_window=all_d2_by_window,
+        pred_len=pred_len,
+    )
+
+    return {
+        "window_count": window_count,
+        "pair_count": len(all_predictions),
+        "overall_ade": overall_ade,
+        "mean_fde": mean_fde,
+        "mean_error_by_horizon": mean_error_by_horizon,
+        "uncertainty_results": uncertainty_results,
+        "calibration_curves": calibration_curves,
+        "d2_by_window": all_d2_by_window,
+    }
