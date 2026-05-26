@@ -49,7 +49,7 @@ def compute_coverage_and_sharpness(predictions, covariances, ground_truth):
         inside_flags = []
         volumes = []
 
-        for pred, cov, gt in zip(predictions, covariances, ground_truth): #zip(...) takes matching elements from three arrays together.
+        for pred, cov, gt in zip(predictions, covariances, ground_truth):
             d2 = mahalanobis_squared(gt, pred, cov)
             inside_flags.append(d2 <= threshold)
             volumes.append(ellipsoid_volume(cov, threshold))
@@ -71,11 +71,11 @@ def compute_calibration_curves(d2_by_window, pred_len):
 
     for h in range(pred_len):
         d2_h = d2_by_window[:, h]
-        cl_of_gt = chi2.cdf(d2_h, df=3) # ground truths confidence level/region 
+        cl_of_gt = chi2.cdf(d2_h, df=3)
         observed_freq = []
 
         for expected_cl in expected_cls:
-            observed = np.mean(cl_of_gt <= expected_cl)   # ground truths confidence level is inside/smaller than the expected confidence level. then take mean for that horizon. 
+            observed = np.mean(cl_of_gt <= expected_cl)
             observed_freq.append(observed)
 
         calibration_curves[h + 1] = {
