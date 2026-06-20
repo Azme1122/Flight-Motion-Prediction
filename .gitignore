@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Python cache
+__pycache__/
+*.pyc
+
+# ML outputs / generated files
+trained_models/
+checkpoints/
+*.pt
+*.pth
+*.pkl
+processed/
+
+# downloaded/cloned repositories inside project
+mdn_trajectory_forecasting/
+AI_MDN_METHOD/LSTM_MDN/repository/
+AI_MDN_METHOD/DATA_NORMALIZATION/mdn_trajectory_forecasting/
