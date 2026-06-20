@@ -1,15 +1,15 @@
 {
     "paths": {
-        "train_data_paths": [
-            "/Users/aljunaidazme/Documents/Codex/2026-06-13/meke-a-new-folder-i-will/LSTM_MDN_Trial_2/base_MDN/mdn_track_data/trial_local_step/train/local_step_samples.pkl"
+       "train_data_paths": [
+            "/home/rt_azme/Documents/flight-motion-prediction/AI_MDN_METHOD/LSTM_MDN/LSTM_MDN_Trial_2/base_MDN/mdn_track_data/trial_local_step/train/local_step_samples.pkl"
         ],
         "val_data_paths": [
-            "/Users/aljunaidazme/Documents/Codex/2026-06-13/meke-a-new-folder-i-will/LSTM_MDN_Trial_2/base_MDN/mdn_track_data/trial_local_step/eval/local_step_samples.pkl"
+            "/home/rt_azme/Documents/flight-motion-prediction/AI_MDN_METHOD/LSTM_MDN/LSTM_MDN_Trial_2/base_MDN/mdn_track_data/trial_local_step/eval/local_step_samples.pkl"
         ],
         "test_data_paths": [
-            "/Users/aljunaidazme/Documents/Codex/2026-06-13/meke-a-new-folder-i-will/LSTM_MDN_Trial_2/base_MDN/mdn_track_data/trial_local_step/test/local_step_samples.pkl"
+            "/home/rt_azme/Documents/flight-motion-prediction/AI_MDN_METHOD/LSTM_MDN/LSTM_MDN_Trial_2/base_MDN/mdn_track_data/trial_local_step/test/local_step_samples.pkl"
         ],
-        "result_path": "/Users/aljunaidazme/Documents/Codex/2026-06-13/meke-a-new-folder-i-will/LSTM_MDN_Trial_2/trained_models"
+        "result_path": "/home/rt_azme/Documents/flight-motion-prediction/AI_MDN_METHOD/LSTM_MDN/LSTM_MDN_Trial_2/trained_models"
     },
     "model_params": {
         "delta_t": 0.1,

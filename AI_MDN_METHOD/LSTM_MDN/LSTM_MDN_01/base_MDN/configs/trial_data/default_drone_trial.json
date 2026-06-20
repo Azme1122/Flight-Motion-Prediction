@@ -1,15 +1,15 @@
 {
     "paths": {
         "train_data_paths": [
-            "/Users/aljunaidazme/Documents/Codex/2026-06-13/meke-a-new-folder-i-will/LSTM_MDN_01/base_MDN/mdn_track_data/trial_data/train/ego_samples.pkl"
+            "/home/rt_azme/Documents/flight-motion-prediction/AI_MDN_METHOD/LSTM_MDN/LSTM_MDN_01/base_MDN/mdn_track_data/trial_data/train/ego_samples.pkl"
         ],
         "val_data_paths": [
-            "/Users/aljunaidazme/Documents/Codex/2026-06-13/meke-a-new-folder-i-will/LSTM_MDN_01/base_MDN/mdn_track_data/trial_data/eval/ego_samples.pkl"
+            "/home/rt_azme/Documents/flight-motion-prediction/AI_MDN_METHOD/LSTM_MDN/LSTM_MDN_01/base_MDN/mdn_track_data/trial_data/eval/ego_samples.pkl"
         ],
         "test_data_paths": [
-            "/Users/aljunaidazme/Documents/Codex/2026-06-13/meke-a-new-folder-i-will/LSTM_MDN_01/base_MDN/mdn_track_data/trial_data/test/ego_samples.pkl"
+            "/home/rt_azme/Documents/flight-motion-prediction/AI_MDN_METHOD/LSTM_MDN/LSTM_MDN_01/base_MDN/mdn_track_data/trial_data/test/ego_samples.pkl"
         ],
-        "result_path": "/Users/aljunaidazme/Documents/Codex/2026-06-13/meke-a-new-folder-i-will/LSTM_MDN_01/trained_models"
+        "result_path": "/home/rt_azme/Documents/flight-motion-prediction/AI_MDN_METHOD/LSTM_MDN/LSTM_MDN_01/trained_models"
     },
     "model_params": {
         "delta_t": 0.1,

@@ -11,7 +11,7 @@ import pandas as pd
 from utils.helper import normalize_local_step_displacements
 
 
-DEFAULT_EXCEL_PATH = "/Users/aljunaidazme/Documents/Thesis/Flight Motion Prediction/CV-KF_code/CV_KF_18MAY/c1.xlsx"
+DEFAULT_EXCEL_PATH = "/home/rt_azme/Documents/flight-motion-prediction/AI_MDN_METHOD/LSTM_MDN/LSTM_MDN_Trial_2/base_MDN/raw_data/c1.xlsx"
 
 
 def parse_args():
