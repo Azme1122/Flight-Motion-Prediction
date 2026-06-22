@@ -1,0 +1,10 @@
+{
+    "prediction_q_scale": 0.001,
+    "measurement_noise_std": 0.1,
+    "selection_metric": "reliability",
+    "ci_name": "CI68",
+    "coverage_percent": 67.03869047619048,
+    "sharpness_avg_volume": 0.4464981276302071,
+    "reliability_score": 78.94874174917493,
+    "calibration_mae": 0.21051258250825078
+}

@@ -1,0 +1,42 @@
+{
+    "paths": {
+        "dataset_paths": [
+            "raw_data/Dataset01.txt",
+            "raw_data/Dataset02.txt",
+            "raw_data/Dataset03.txt",
+            "raw_data/Dataset04.txt"
+        ],
+        "track_data_dir": "cv_kf_track_data/trial_data",
+        "result_path": "results/trial_data"
+    },
+    "model_params": {
+        "delta_t": 0.1,
+        "max_input_horizon": 8,
+        "forecast_horizon": 12
+    },
+    "split_params": {
+        "train_ratio": 0.70,
+        "shift": 1,
+        "max_points_per_dataset": null
+    },
+    "reference_params": {
+        "q_scale": 0.2,
+        "measurement_noise_std": 0.1
+    },
+    "tuning_params": {
+        "q_min": 0.001,
+        "q_max": 2.0,
+        "q_step": 0.01,
+        "r_std_values": [0.1],
+        "ci_name": "CI68",
+        "selection_metric": "reliability",
+        "tune_horizon": null
+    },
+    "test_params": {
+        "prediction_q_scale": null,
+        "measurement_noise_std": null,
+        "save_plots": true,
+        "show_plots": false,
+        "plot_horizons": [1, 2, 4, 6, 8, 10, 12]
+    }
+}
