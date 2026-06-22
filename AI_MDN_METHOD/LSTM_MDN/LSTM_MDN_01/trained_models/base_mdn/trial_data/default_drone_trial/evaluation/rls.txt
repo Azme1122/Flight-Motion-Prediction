@@ -1,0 +1,10 @@
+Reliability Scores:
+--------------------:
+ avg. RLS @ 0.2 sec: 95.09 %
+ avg. RLS @ 0.4 sec: 94.71 %
+ avg. RLS @ 0.6 sec: 95.06 %
+ avg. RLS @ 0.8 sec: 95.81 %
+ avg. RLS @ 1.0 sec: 95.52 %
+ avg. RLS @ 1.2 sec: 95.36 %
+--------------------:
+ RLS: avg: 95.26 %, min: 88.36 %

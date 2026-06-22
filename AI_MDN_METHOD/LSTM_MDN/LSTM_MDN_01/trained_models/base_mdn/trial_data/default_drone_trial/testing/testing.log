@@ -1,0 +1,32 @@
+2026-06-20 17:58:33,518 - Start testing for: 
+ - config: default_drone_trial 
+ - target: trial_data 
+ - model_arch: base_mdn 
+ - model parameters: 7656
+2026-06-20 17:58:40,363 - ====================
+2026-06-20 17:58:40,363 -  Avg model inference time: 0.34 ms
+2026-06-20 17:58:40,569 - ====================
+2026-06-20 17:58:40,570 - ASAEE: 11.057 m
+2026-06-20 17:58:40,664 - ====================
+2026-06-20 17:58:40,664 - Reliability Scores: 
+2026-06-20 17:58:40,664 -  avg. RLS @ 0.2 sec: 93.85 %
+2026-06-20 17:58:40,664 -  avg. RLS @ 0.4 sec: 94.94 %
+2026-06-20 17:58:40,664 -  avg. RLS @ 0.6 sec: 94.26 %
+2026-06-20 17:58:40,664 -  avg. RLS @ 0.8 sec: 92.72 %
+2026-06-20 17:58:40,665 -  avg. RLS @ 1.0 sec: 92.92 %
+2026-06-20 17:58:40,665 -  avg. RLS @ 1.2 sec: 92.39 %
+2026-06-20 17:58:40,665 - --------------------
+2026-06-20 17:58:40,665 -  RLS: avg: 93.51 %, min: 84.26 %
+2026-06-20 17:58:40,755 - ====================
+2026-06-20 17:58:40,755 - Sharpness Score: 
+2026-06-20 17:58:40,755 -  SS @ 0.95 %: 190.06 m³/s
+2026-06-20 17:58:40,755 -  SS @ 0.68 %: 20.15 m³/s
+2026-06-20 17:58:40,755 - ====================
+2026-06-20 17:58:40,755 - Best of K (20) min ADE/FDE: 
+2026-06-20 17:58:40,755 - --------------------
+2026-06-20 17:58:40,755 -  min ADE K: 1.276 m
+2026-06-20 17:58:40,755 -  min FDE K: 1.839 m
+2026-06-20 17:58:40,866 - Saved evaluation summary: /home/rt_azme/Documents/flight-motion-prediction/AI_MDN_METHOD/LSTM_MDN/LSTM_MDN_01/trained_models/base_mdn/trial_data/default_drone_trial/testing/evaluation_summary.png
+2026-06-20 17:58:40,866 - Plotting 123 examples...
+2026-06-20 17:59:33,225 - Finished testing...
+2026-06-20 17:59:33,225 - All tests completed, shutdown...
