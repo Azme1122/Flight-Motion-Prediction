@@ -1,10 +1,17 @@
 {
-    "prediction_q_scale": 0.001,
+    "prediction_q_scale": 0.011,
     "measurement_noise_std": 0.1,
+    "training_sample_count": 7470,
+    "q_min": 0.001,
+    "q_max": 2.0,
+    "q_step": 0.01,
+    "r_std_values": [
+        0.1
+    ],
     "selection_metric": "reliability",
     "ci_name": "CI68",
-    "coverage_percent": 67.03869047619048,
-    "sharpness_avg_volume": 0.4464981276302071,
-    "reliability_score": 78.94874174917493,
-    "calibration_mae": 0.21051258250825078
+    "coverage_percent": 56.61981258366801,
+    "sharpness_avg_volume": 4.117483956200275,
+    "reliability_score": 80.89241454265908,
+    "calibration_mae": 0.19107585457340914
 }
