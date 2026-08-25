@@ -1,32 +1,42 @@
 # Flight Motion Prediction
 
-This repository contains ongoing work on flight motion prediction using drone trajectory data. The current focus is to compare a classical Constant Velocity Kalman Filter baseline with AI-based probabilistic trajectory prediction methods.
+This repository contains selected implementations from my ongoing Master's thesis on probabilistic 3D motion prediction of flying objects for collision-free drone control.
 
-At this stage, the project is not completed yet. The currently implemented methods are:
+> **Repository Notice:** This GitHub repository contains only a selected public subset of the ongoing thesis implementation. The primary development repository is maintained privately on the university GitLab infrastructure. Since the thesis is still in progress, newer experimental models, ongoing implementations, and intermediate research results are not currently published here.
 
-- Constant Velocity Kalman Filter (CV-KF)
-- LSTM + Mixture Density Network (LSTM+MDN)
+The broader thesis investigates both physics-based and learning-based approaches, including a Constant Velocity Kalman Filter (CV-KF) baseline and sequence models such as LSTM, GRU, TCN, Transformer, and Mamba combined with a Mixture Density Network (MDN) output head for probabilistic trajectory prediction. It also investigates physics-enhanced residual learning approaches that combine model-based prediction with neural-network-based residual estimation.
 
-Next, other possible AI+MDN methods will be investigated and compared against the current implementations.
+The implementations currently available in this public repository are:
+
+* Constant Velocity Kalman Filter (CV-KF)
+* LSTM + Mixture Density Network (LSTM+MDN)
+
+Additional methods currently being developed and evaluated as part of the thesis are maintained in the private university GitLab repository and may be added here later when appropriate.
 
 ## Project Overview
 
-The goal of this project is to predict future motion from observed trajectory data and evaluate how reliable the predictions are. The work includes both deterministic and probabilistic approaches:
+The goal of this project is to predict the future 3D motion of flying objects from observed trajectory data and evaluate both prediction accuracy and uncertainty quality.
 
-- **CV-KF** predicts future positions using a constant-velocity motion model.
-- **LSTM+MDN** predicts a probability distribution over future positions, which can represent uncertainty and multiple possible future motions.
+The overall thesis investigates deterministic and probabilistic approaches:
 
-This makes it possible to compare prediction accuracy, uncertainty quality, and reliability across different methods.
+* **CV-KF** predicts future positions using a constant-velocity motion model.
+* **LSTM+MDN** predicts a probability distribution over future positions, allowing uncertainty and multiple possible future motions to be represented.
+* **Additional sequence models** including GRU, TCN, Transformer, and Mamba are being investigated with MDN-based probabilistic output heads.
+* **Physics-enhanced residual learning** is being investigated by combining model-based predictions with neural-network-based residual estimation.
+
+Only the CV-KF and LSTM+MDN implementations are currently included in this public GitHub repository.
+
+The methods are evaluated with respect to trajectory prediction accuracy as well as the quality and reliability of their probabilistic predictions.
 
 ## Dataset
 
-This project uses drone trajectory data from:
+This project currently uses drone trajectory data from:
 
 [CenekAlbl/drone-tracking-datasets](https://github.com/CenekAlbl/drone-tracking-datasets.git)
 
-The dataset contains drone trajectories that are used as the current source data for preprocessing, training, testing, and evaluation.
+The dataset contains drone trajectories used for preprocessing, training, testing, and evaluation.
 
-Other possible datasets may also be used later for additional training, testing, and comparison.
+Additional datasets may also be investigated during the thesis for further training, testing, and comparison.
 
 ## Repository Structure
 
@@ -47,7 +57,7 @@ Flight Motion Prediction/
         └── LSTM_MDN_Trial_2/
 ```
 
-## Implemented Methods
+## Publicly Available Implementations
 
 ### 1. Constant Velocity Kalman Filter
 
@@ -57,16 +67,16 @@ The updated CV-KF implementation is located in:
 CV-KF_code/CV_KF_22JUNE/
 ```
 
-This method is used as the classical baseline. It estimates and predicts trajectory motion using a constant-velocity Kalman filter model.
+This method serves as the classical physics-based baseline. It estimates and predicts trajectory motion using a constant-velocity Kalman filter model.
 
-The updated implementation includes:
+The implementation includes:
 
-- raw drone trajectory data handling
-- trajectory preprocessing
-- Kalman filter prediction
-- evaluation and summary generation
-- visualization scripts
-- result storage
+* raw drone trajectory data handling
+* trajectory preprocessing
+* Kalman filter prediction
+* evaluation and summary generation
+* visualization scripts
+* result storage
 
 Main folder:
 
@@ -76,13 +86,13 @@ CV-KF_code/CV_KF_22JUNE/base_CV_KF/
 
 Important files include:
 
-- `preprocess_3d.py`
-- `kalman_filter_model.py`
-- `train.py`
-- `testing.py`
-- `metrics.py`
-- `generate_eval_summary.py`
-- `visualization.py`
+* `preprocess_3d.py`
+* `kalman_filter_model.py`
+* `train.py`
+* `testing.py`
+* `metrics.py`
+* `generate_eval_summary.py`
+* `visualization.py`
 
 ### 2. LSTM + Mixture Density Network
 
@@ -93,73 +103,97 @@ AI_MDN_METHOD/LSTM_MDN/LSTM_MDN_01/
 AI_MDN_METHOD/LSTM_MDN/LSTM_MDN_02/
 ```
 
-These two versions are based on two different trajectory normalization methods.
+These versions use different trajectory normalization approaches.
 
-Each version contains a `base_MDN` workflow with:
+Each version contains a `base_MDN` workflow covering:
 
-- preprocessing
-- LSTM model code
-- MDN output layer
-- training
-- testing
-- evaluation
-- summary generation
-- visualization
+* preprocessing
+* LSTM sequence modeling
+* MDN probabilistic output layer
+* training
+* testing
+* evaluation
+* summary generation
+* visualization
 
 Important files include:
 
-- `preprocess_3d.py`
-- `base_lstm.py`
-- `mdn.py`
-- `train.py`
-- `testing.py`
-- `eval.py`
-- `generate_eval_summary.py`
-- `vis.py`
+* `preprocess_3d.py`
+* `base_lstm.py`
+* `mdn.py`
+* `train.py`
+* `testing.py`
+* `eval.py`
+* `generate_eval_summary.py`
+* `vis.py`
 
 ## Data Normalization
 
-The AI workflow includes different normalization approaches for preparing drone trajectory data before model training.
+Different normalization approaches are investigated for preparing trajectory data before training the learning-based models.
 
-The two updated LSTM+MDN folders represent the current comparison between two normalization methods:
+The two publicly available LSTM+MDN versions represent the current comparison between two normalization methods:
 
-- `LSTM_MDN_01`
-- `LSTM_MDN_02`
+* `LSTM_MDN_01`
+* `LSTM_MDN_02`
 
-The purpose is to study how the normalization method affects prediction performance and uncertainty quality.
+The purpose is to investigate how trajectory representation and normalization influence prediction accuracy and uncertainty quality.
 
-## Current Project Status
+## Ongoing Thesis Development
 
-This repository is still under development.
+The complete thesis implementation is under active development in a private university GitLab repository.
 
-Completed or currently implemented:
+Current research beyond the publicly available GitHub implementation includes:
 
-- drone trajectory data integration
-- CV-KF baseline implementation
-- LSTM+MDN implementation
-- two normalization-based LSTM+MDN variants
-- preprocessing, training, testing, and evaluation scripts
+* GRU + MDN
+* TCN + MDN
+* Transformer + MDN
+* Mamba + MDN
+* physics-enhanced residual learning
+* comparison of physics-based and learning-based prediction approaches
+* probabilistic uncertainty and reliability evaluation
 
-Planned next steps:
+These implementations and experimental results are intentionally not synchronized completely with this public GitHub repository while the thesis is ongoing.
 
-- investigate additional AI+MDN methods
-- include other possible datasets for future training and testing
-- compare all implemented methods using the same drone trajectory data
-- evaluate prediction accuracy and uncertainty reliability
-- organize final results and documentation
+## Evaluation
+
+The prediction methods are evaluated using metrics including:
+
+* Average Displacement Error (ADE)
+* Final Displacement Error (FDE)
+* probabilistic reliability
+* coverage
+* sharpness
+
+This allows comparison of both trajectory accuracy and the quality of the predicted uncertainty distributions.
+
+## Current Public Repository Status
+
+Currently available on GitHub:
+
+* drone trajectory data integration
+* CV-KF baseline
+* LSTM+MDN
+* two normalization-based LSTM+MDN variants
+* preprocessing, training, testing, and evaluation workflows
+* evaluation and visualization utilities
+
+Ongoing thesis work maintained privately includes additional sequence architectures, physics-enhanced prediction approaches, experiments, and intermediate results.
 
 ## Expected Outputs
 
 Depending on the selected method, the code can generate:
 
-- processed trajectory files
-- predicted future trajectories
-- trained model files
-- evaluation metrics
-- summary tables
-- visualizations of trajectory predictions
-- comparison results between methods
+* processed trajectory files
+* predicted future trajectories
+* trained model files
+* evaluation metrics
+* summary tables
+* trajectory visualizations
+* probabilistic prediction results
+* method comparison results
 
 ## Purpose
 
-The purpose of this repository is to build and compare flight motion prediction methods for drone trajectory data. The final objective is to understand which approach gives the most accurate and reliable future trajectory prediction.
+The purpose of this repository is to provide selected implementations from an ongoing investigation into probabilistic motion prediction of flying objects.
+
+The broader objective of the thesis is to compare physics-based, learning-based, and physics-enhanced approaches and determine which methods provide accurate, reliable, and useful future trajectory predictions for collision-free drone control.
